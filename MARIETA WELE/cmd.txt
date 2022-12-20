@@ -1,0 +1,219 @@
+Microsoft Windows [version 10.0.19045.2251]
+(c) Microsoft Corporation. Tous droits réservés.
+
+C:\Users\MARIETA>cd Desktop
+
+C:\Users\MARIETA\Desktop>cd L3_info
+
+C:\Users\MARIETA\Desktop\L3_info>md devoir
+
+C:\Users\MARIETA\Desktop\L3_info>cd devoir
+
+C:\Users\MARIETA\Desktop\L3_info\devoir>md a,b
+
+C:\Users\MARIETA\Desktop\L3_info\devoir>cd a
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>openssl genrsa -out cleA.pem 2048
+Loading 'screen' into random state - done
+Generating RSA private key, 2048 bit long modulus
+.....................................+++
+....+++
+unable to write 'random state'
+e is 65537 (0x10001)
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>openssl rsa -in cleA.pem -pubout -out clepA.pem
+writing RSA key
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>openssl rsa -in cleA.pem -des3 -out cleA.pem
+writing RSA key
+Enter PEM pass phrase:
+Verifying - Enter PEM pass phrase:
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>type nul
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>echo bonjour le monde >msg.txt
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>dir
+ Le volume dans le lecteur C n’a pas de nom.
+ Le numéro de série du volume est FA9A-3284
+
+ Répertoire de C:\Users\MARIETA\Desktop\L3_info\devoir\a
+
+07/12/2022  11:02    <DIR>          .
+07/12/2022  11:02    <DIR>          ..
+07/12/2022  11:01             1 751 cleA.pem
+07/12/2022  11:00               451 clepA.pem
+07/12/2022  11:02                19 msg.txt
+               3 fichier(s)            2 221 octets
+               2 Rép(s)  204 787 449 856 octets libres
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>cd ../b
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\b>openssl genrsa -out cleB.pem 2048
+Loading 'screen' into random state - done
+Generating RSA private key, 2048 bit long modulus
+.............+++
+.........................................................+++
+unable to write 'random state'
+e is 65537 (0x10001)
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\b>openssl rsa -in cleB.pem -pubout -out clepB.pem
+writing RSA key
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\b>openssl rsa -in cleB.pem -des3 -out cleB.pem
+writing RSA key
+Enter PEM pass phrase:
+Verifying - Enter PEM pass phrase:
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\b>cd ../a
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>openssl rsautl -encrypt -in msg.txt -pubin -inkey clepB.pem -out chiff.txt
+Loading 'screen' into random state - done
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>dir
+ Le volume dans le lecteur C n’a pas de nom.
+ Le numéro de série du volume est FA9A-3284
+
+ Répertoire de C:\Users\MARIETA\Desktop\L3_info\devoir\a
+
+07/12/2022  11:10    <DIR>          .
+07/12/2022  11:10    <DIR>          ..
+07/12/2022  11:10               256 chiff.txt
+07/12/2022  11:01             1 751 cleA.pem
+07/12/2022  11:00               451 clepA.pem
+07/12/2022  11:06               451 clepB.pem
+07/12/2022  11:02                19 msg.txt
+               5 fichier(s)            2 928 octets
+               2 Rép(s)  204 783 140 864 octets libres
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>cd ../b
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\b>dir
+ Le volume dans le lecteur C n’a pas de nom.
+ Le numéro de série du volume est FA9A-3284
+
+ Répertoire de C:\Users\MARIETA\Desktop\L3_info\devoir\b
+
+07/12/2022  11:11    <DIR>          .
+07/12/2022  11:11    <DIR>          ..
+07/12/2022  11:10               256 chiff.txt
+07/12/2022  11:06             1 751 cleB.pem
+07/12/2022  11:00               451 clepA.pem
+07/12/2022  11:06               451 clepB.pem
+07/12/2022  11:02                19 msg.txt
+               5 fichier(s)            2 928 octets
+               2 Rép(s)  204 782 665 728 octets libres
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\b>openssl rsautl -decrypt -in chiff.txt -inkey cleB.pem -out dechiff.txt
+Loading 'screen' into random state - done
+Enter pass phrase for cleB.pem:
+unable to load Private Key
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\b>openssl rsautl -decrypt -in chiff.txt -inkey cleB.pem -out dechiff.txt
+Loading 'screen' into random state - done
+Enter pass phrase for cleB.pem:
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\b>dir
+ Le volume dans le lecteur C n’a pas de nom.
+ Le numéro de série du volume est FA9A-3284
+
+ Répertoire de C:\Users\MARIETA\Desktop\L3_info\devoir\b
+
+07/12/2022  11:13    <DIR>          .
+07/12/2022  11:13    <DIR>          ..
+07/12/2022  11:10               256 chiff.txt
+07/12/2022  11:06             1 751 cleB.pem
+07/12/2022  11:00               451 clepA.pem
+07/12/2022  11:06               451 clepB.pem
+07/12/2022  11:13                19 dechiff.txt
+07/12/2022  11:02                19 msg.txt
+               6 fichier(s)            2 947 octets
+               2 Rép(s)  204 781 883 392 octets libres
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\b>cd ../a
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>openssl dgst -md5 -out empreinte.txt msg.txt
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>openssl rsautl -sign -in empreinte.txt -inkey cleA.pem -out sign.txt
+Loading 'screen' into random state - done
+Enter pass phrase for cleA.pem:
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>cd ../b
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\b>dir
+ Le volume dans le lecteur C n’a pas de nom.
+ Le numéro de série du volume est FA9A-3284
+
+ Répertoire de C:\Users\MARIETA\Desktop\L3_info\devoir\b
+
+07/12/2022  11:16    <DIR>          .
+07/12/2022  11:16    <DIR>          ..
+07/12/2022  11:10               256 chiff.txt
+07/12/2022  11:06             1 751 cleB.pem
+07/12/2022  11:00               451 clepA.pem
+07/12/2022  11:06               451 clepB.pem
+07/12/2022  11:13                19 dechiff.txt
+07/12/2022  11:14                47 empreinte.txt
+07/12/2022  11:02                19 msg.txt
+07/12/2022  11:15               256 sign.txt
+               8 fichier(s)            3 250 octets
+               2 Rép(s)  204 781 498 368 octets libres
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\b>openssl rsautl -verify -in sign.txt -pubin -inkey clepA.pem -out verification.txt
+Loading 'screen' into random state - done
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\b>dir
+ Le volume dans le lecteur C n’a pas de nom.
+ Le numéro de série du volume est FA9A-3284
+
+ Répertoire de C:\Users\MARIETA\Desktop\L3_info\devoir\b
+
+07/12/2022  11:18    <DIR>          .
+07/12/2022  11:18    <DIR>          ..
+07/12/2022  11:10               256 chiff.txt
+07/12/2022  11:06             1 751 cleB.pem
+07/12/2022  11:00               451 clepA.pem
+07/12/2022  11:06               451 clepB.pem
+07/12/2022  11:13                19 dechiff.txt
+07/12/2022  11:14                47 empreinte.txt
+07/12/2022  11:02                19 msg.txt
+07/12/2022  11:15               256 sign.txt
+07/12/2022  11:18                47 verification.txt
+               9 fichier(s)            3 297 octets
+               2 Rép(s)  204 781 633 536 octets libres
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\b>type verification.txt
+MD5(msg.txt)= f51296bd42300b63faf00a316b3ab94a
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\b>cd ../a
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>dir
+ Le volume dans le lecteur C n’a pas de nom.
+ Le numéro de série du volume est FA9A-3284
+
+ Répertoire de C:\Users\MARIETA\Desktop\L3_info\devoir\a
+
+07/12/2022  11:15    <DIR>          .
+07/12/2022  11:15    <DIR>          ..
+07/12/2022  11:10               256 chiff.txt
+07/12/2022  11:01             1 751 cleA.pem
+07/12/2022  11:00               451 clepA.pem
+07/12/2022  11:06               451 clepB.pem
+07/12/2022  11:14                47 empreinte.txt
+07/12/2022  11:02                19 msg.txt
+07/12/2022  11:15               256 sign.txt
+               7 fichier(s)            3 231 octets
+               2 Rép(s)  204 781 633 536 octets libres
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>type empreinte.txt
+MD5(msg.txt)= f51296bd42300b63faf00a316b3ab94a
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>
+
+C:\Users\MARIETA\Desktop\L3_info\devoir\a>

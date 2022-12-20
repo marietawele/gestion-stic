@@ -1,0 +1,1 @@
+MD5(msg.txt)= f51296bd42300b63faf00a316b3ab94a
